@@ -96,9 +96,11 @@ RSpec.describe Lista do
       it "lista vacía" do
         expect(@l1.empty).to be true
       end
-      it "Insertar un elemento a la lista:" do
-        expect(@l1.insertar(@e1)).to eq(@e1)
-      end
+  end
+  describe "Insertando elementos:" do
+    it "Insertar un elemento a la lista:" do
+      expect(@l1.insertar(@e1)).to eq(@e1)
+    end
   end
 
 end
