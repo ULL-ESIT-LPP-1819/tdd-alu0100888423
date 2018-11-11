@@ -8,5 +8,12 @@ class Lista
       @inicio=nil
     end
 
+    def empty()
+      if(@inicio = true)
+        return true
+      else
+        return false
+      end
+    end
 
 end
