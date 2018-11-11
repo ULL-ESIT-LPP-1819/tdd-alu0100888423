@@ -34,4 +34,13 @@ class Lista
         end
     end
 
+    def insertar_varios(vector)
+        aux = 0
+        for i in vector
+            insertar(i)
+            aux = aux + 1
+        end
+        return aux
+    end
+
 end
