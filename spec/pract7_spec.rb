@@ -1,5 +1,5 @@
 require "spec_helper"
-
+=begin
 RSpec.describe Etiqueta do
   it "has a version number" do
     expect(Pract7::VERSION).not_to be nil
@@ -74,4 +74,23 @@ describe "#Debe existir un método " do
         expect(@e1.etiqueta_formateada).to eq("chocolate -->\t \t Por 100g de producto \n\t Valor energético: 2135.6 KJ (512.2 Kcal) \t 25.42% \n\t Cantidad de grasas: 33 gramos \t 47.0% \n\t Cantidad de grasas saturadas: 20 gramos  \t 100.0% \n\t Cantidad de hidratos de carbono: 48 gramos \t 18.0% \n\t Cantidad de azúcares: 45 gramos \t 50.0% \n\t Cantidad de proteínas: 5.8 gramos \t 11.6% \n\t Cantidad de sal: 0.003 gramos \t 0.05% \n4 porciones de 12g")
     end
   end
+end
+=end
+describe Lista do
+  before :all do
+    @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+    @e2 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+    @e3 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+    @e4 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+    @e5 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+
+    @l1.Lista.new()
+
+  end
+  describe "#Lista:" do
+      it "Debe existir una lista vacía" do
+          expect(@l1.inicio).to eq(nil)
+      end
+  end
+
 end
