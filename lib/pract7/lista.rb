@@ -43,4 +43,11 @@ class Lista
         return aux
     end
 
+    def extraer_inicio
+      aux = @inicio
+      @inicio=@inicio.next
+
+      return aux.value
+    end
+
 end
