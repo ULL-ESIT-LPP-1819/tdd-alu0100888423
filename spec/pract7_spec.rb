@@ -90,8 +90,11 @@ RSpec.describe Lista do
   end
 
   describe "Lista:" do
-      it "#null?" do
+      it "nodo1 igual a null?" do
           expect(@l1.inicio).to be_nil
+      end
+      it "lista vacía" do
+        expect(@l1.empty).to be true
       end
   end
 
