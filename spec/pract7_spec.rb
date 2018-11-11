@@ -105,6 +105,9 @@ RSpec.describe Lista do
     it"Insertar varios elementos a la lista:" do
       expect(@l1.insertar_varios(@v1)).to eq(4)
     end
+    it"Extraer por el inicio" do
+      expect(@l1.extraer_inicio).to eq(@e1)
+    end
   end
 
 end
