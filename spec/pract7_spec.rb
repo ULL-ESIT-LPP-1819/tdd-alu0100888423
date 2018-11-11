@@ -76,7 +76,8 @@ describe "#Debe existir un método " do
   end
 end
 =end
-describe Lista do
+
+RSpec.describe Lista do
   before :all do
     @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
     @e2 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
@@ -84,12 +85,13 @@ describe Lista do
     @e4 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
     @e5 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
 
-    @l1.Lista.new()
+    @l1 = Lista.new()
 
   end
-  describe "#Lista:" do
-      it "Debe existir una lista vacía" do
-          expect(@l1.inicio).to eq(nil)
+
+  describe "Lista:" do
+      it "#null?" do
+          expect(@l1.inicio).to be_nil
       end
   end
 
