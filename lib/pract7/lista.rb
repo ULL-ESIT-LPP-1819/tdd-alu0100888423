@@ -24,9 +24,9 @@ class Lista
           @final=aux
           return @inicio.value
         elsif(@final == nil)
-            aux=Node.new(value,@inicio,nil)
-            @final=aux
-            return @final.value
+          aux=Node.new(value,@inicio,nil)
+          @final=aux
+           return @final.value
         else
           aux=Node.new(value,@final,nil)
           @final=aux

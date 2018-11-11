@@ -80,12 +80,13 @@ end
 RSpec.describe Lista do
   before :all do
     @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
-    @e2 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
-    @e3 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
-    @e4 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
-    @e5 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+    @e2 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.004, 12, 4)
+    @e3 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.006, 12, 4)
+    @e4 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.005, 12, 4)
+    @e5 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.008, 12, 4)
 
     @l1 = Lista.new()
+    @v1 = [@e2, @e3, @e4, @e5]
 
   end
 
@@ -100,6 +101,9 @@ RSpec.describe Lista do
   describe "Insertando elementos:" do
     it "Insertar un elemento a la lista:" do
       expect(@l1.insertar(@e1)).to eq(@e1)
+    end
+    it"Insertar varios elementos a la lista:" do
+      expect(@l1.insertar_varios(@v1)).to eq(4)
     end
   end
 
