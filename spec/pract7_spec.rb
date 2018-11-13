@@ -80,10 +80,10 @@ end
 RSpec.describe Lista do
   before :all do
     @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
-    @e2 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.004, 12, 4)
-    @e3 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.006, 12, 4)
-    @e4 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.005, 12, 4)
-    @e5 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.008, 12, 4)
+    @e2 = Etiqueta.new('papas fritas', 33, 20, 48, 45, 5.8, 7.5, 12, 4)
+    @e3 = Etiqueta.new('pipas girasol', 33, 20, 48, 45, 5.8, 6.2, 12, 4)
+    @e4 = Etiqueta.new('ambrosia tirma', 33, 20, 48, 45, 5.8, 0.5, 12, 4)
+    @e5 = Etiqueta.new('Donut crema', 33, 20, 48, 45, 5.8, 0.8, 12, 4)
 
     @l1 = Lista.new()
     @v1 = [@e2, @e3, @e4, @e5]
@@ -101,13 +101,27 @@ RSpec.describe Lista do
   describe "Insertando elementos:" do
     it "Insertar un elemento a la lista:" do
       expect(@l1.insertar(@e1)).to eq(@e1)
+      expect(@l1.inicio).not_to be nil
+      expect(@l1.insertar(@e2)).to eq(@e2)
+      expect(@l1.insertar(@e3)).to eq(@e3)
+      expect(@l1.insertar(@e4)).to eq(@e4)
+      expect(@l1.insertar(@e5)).to eq(@e5)
+      expect(@l1.inicio.prev).not_to be nil
     end
-    it"Insertar varios elementos a la lista:" do
-      expect(@l1.insertar_varios(@v1)).to eq(4)
-    end
+  #  it"Insertar varios elementos a la lista:" do
+  #    expect(@l1.insertar_varios(@v1)).to eq(4)
+  #  end
+
     it"Extraer por el inicio" do
       expect(@l1.extraer_inicio).to eq(@e1)
+      #expect(@l1.inicio).not_to be nil
     end
   end
+
+    describe "Clasificando según los gramos de sal." do
+      it"Clasificando por gramos de sal."do
+        expect(@l1.clasificacion_sal).to eq("Superiores a la IR [7.5, 6.2] | Inferiores a la IR [0.5, 0.8]")
+      end
+    end
 
 end

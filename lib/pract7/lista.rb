@@ -18,19 +18,16 @@ class Lista
     end
 
     def insertar(value)
-        if(@inicio == nil)
-          aux = Node.new(value,@inicio,@final)
+        if (empty)
+          aux = Node.new(value,nil,nil)
           @inicio=aux
           @final=aux
           return @inicio.value
-        elsif(@final == nil)
-          aux=Node.new(value,@inicio,nil)
-          @final=aux
-           return @final.value
         else
           aux=Node.new(value,@final,nil)
-          @final=aux
-          return @final.value
+            @final.prev = aux
+            @final=aux
+            return @final.value
         end
     end
 
@@ -45,10 +42,31 @@ class Lista
 
     def extraer_inicio
       aux = @inicio
-      @inicio=@inicio.next
+      @inicio = @inicio.prev
 
       return aux.value
     end
 
+    def clasificacion_sal()
+
+      superior_ir=Array.new
+      inferior_ir=Array.new
+
+      while(@inicio != nil) do
+        if(@inicio.value.sal >= 6)
+            superior_ir << @inicio.value.sal
+            extraer_inicio
+        else
+            inferior_ir << @inicio.value.get_sal
+            extraer_inicio
+        end
+      end
+
+      "Superiores a la IR #{superior_ir} | Inferiores a la IR #{inferior_ir}"
+
+    end
+
 
 end
+
+#l1 = Lista.new()
