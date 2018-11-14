@@ -1,5 +1,5 @@
 require "spec_helper"
-=begin
+
 RSpec.describe Etiqueta do
   it "has a version number" do
     expect(Pract7::VERSION).not_to be nil
@@ -75,7 +75,7 @@ describe "#Debe existir un método " do
     end
   end
 end
-=end
+
 
 RSpec.describe Lista do
   before :all do
@@ -101,12 +101,10 @@ RSpec.describe Lista do
   describe "Insertando elementos:" do
     it "Insertar un elemento a la lista:" do
       expect(@l1.insertar(@e1)).to eq(@e1)
-      expect(@l1.inicio).not_to be nil
       expect(@l1.insertar(@e2)).to eq(@e2)
       expect(@l1.insertar(@e3)).to eq(@e3)
       expect(@l1.insertar(@e4)).to eq(@e4)
       expect(@l1.insertar(@e5)).to eq(@e5)
-      expect(@l1.inicio.prev).not_to be nil
     end
   #  it"Insertar varios elementos a la lista:" do
   #    expect(@l1.insertar_varios(@v1)).to eq(4)
