@@ -159,6 +159,11 @@ end
 RSpec.describe Paciente do
   before :all do
   @paciente = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14)
+  @p2 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19)
+  @p3 = Paciente.new(78,1.81,'Natalia', 'Rodriguez', 0, 54)
+  @p4 = Paciente.new(86,1.60,'German', 'Mendez', 1, 22)
+  @p5 = Paciente.new(52,1.55,'Ana', 'Pérez', 0, 37)
+  @l2 = Lista.new()
   end
   describe "Es un método: " do
     it"Talla es un método de la propia clase?" do
@@ -198,4 +203,17 @@ RSpec.describe Paciente do
       expect(@paciente.calc_imc.round(2)).to eq 21.39
     end
   end
+  describe "Debe tener una lista creada por 5 individuos" do
+    it"Debe meter todos los elementos en la lista" do
+      expect(@l2.insertar(@paciente)).to eq(@paciente)
+      expect(@l2.insertar(@p2)).to eq(@p2)
+      expect(@l2.insertar(@p3)).to eq(@p3)
+      expect(@l2.insertar(@p4)).to eq(@p4)
+      expect(@l2.insertar(@p5)).to eq(@p5)
+    end
+    it"Se debe poder organizar según sus imc"do
+      expect(@l2.clasificacion_masacorporal).to be nil
+    end
+  end
+
 end
