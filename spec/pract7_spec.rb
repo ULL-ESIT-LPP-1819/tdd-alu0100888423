@@ -123,3 +123,14 @@ RSpec.describe Lista do
     end
 
 end
+
+RSpec.describe Persona do
+    before :all do
+      @persona= Persona.new('Nombre')
+    end
+    describe "La persona tiene un nombre" do
+      it "Tiene un nombre" do
+        expect(@persona.nombre).to eq 'Nombre'
+      end
+    end
+end

@@ -38,7 +38,7 @@ class Lista
             aux = aux + 1
         end
         return aux
-    end
+    end  
 
     def extraer_inicio
       aux = @inicio
