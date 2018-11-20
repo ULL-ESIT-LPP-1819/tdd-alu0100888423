@@ -222,3 +222,44 @@ RSpec.describe Paciente do
   end
 
 end
+
+RSpec.describe Tratamiento_obesidad do
+    before :all do
+      @ej1= Tratamiento_obesidad.new(0.86,0.85,0.90,0.91,'Nombre', 'Apellido', 1, 14)
+    end
+    describe "Es un método: " do
+      it"Calc_rel es un método de la propia clase?" do
+        expect(@ej1.respond_to?:calc_rel).to eq true
+      end
+    end
+    describe "Metodo Heredado" do
+        it "Es un metodo heredado de la superclase?" do
+            expect(@ej1.respond_to?:nombre).to eq(true)
+        end
+    end
+    describe "Instancia" do
+      it "El metodo es una instancia de la clase?" do
+          expect(@ej1.instance_of?Tratamiento_obesidad).to eq(true)
+      end
+      it "El metodo no debe ser una instancia de la clase" do
+          expect(@ej1.instance_of?Persona).to eq(false)
+      end
+    end
+
+    describe "Jerarquía " do
+      it "Pertenece a la Clase Persona?" do
+        expect(@ej1.is_a?Persona).to eq(true)
+      end
+      it "Pertenece a la Clase Object?" do
+        expect(@ej1.is_a?Object).to eq(true)
+      end
+      it "Pertenece a la Clase BasicObject?" do
+        expect(@ej1.is_a?BasicObject).to eq(true)
+      end
+    end
+    describe "Debe tener método:" do
+      it "Método to_s?" do
+        expect(@ej1.to_s).to eq ("Me llamo Nombre Apellido, tengo 14 años | Relacion cintura/cadera --> 0.94")
+      end
+    end
+end

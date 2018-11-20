@@ -31,3 +31,23 @@ class Paciente < Persona
   end
 
 end
+
+class Tratamiento_obesidad < Persona
+  attr_reader :cad1, :cad2, :cint1, :cint2
+
+  def initialize(cint1, cint2, cad1, cad2, nombre, apellido, sexo, edad)
+    @cad1 = cad1
+    @cad2 = cad2
+    @cint1 = cint1
+    @cint2 = cint2
+    super(nombre,apellido,sexo,edad)
+  end
+  def calc_rel
+    mediacad= (@cad1+@cad2)/2
+    mediacint= (@cint1+@cint2)/2
+    mediacint / mediacad
+  end
+  def to_s
+    "Me llamo #{@nombre} #{@apellido}, tengo #{@edad} años | Relacion cintura/cadera --> #{calc_rel.round(2)}"
+  end
+end
