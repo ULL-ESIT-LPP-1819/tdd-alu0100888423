@@ -126,11 +126,23 @@ end
 
 RSpec.describe Persona do
     before :all do
-      @persona= Persona.new('Nombre')
+      @persona= Persona.new('Nombre', 'Apellido', 1, 14)
     end
-    describe "La persona tiene un nombre" do
+    describe "La persona tiene " do
       it "Tiene un nombre" do
         expect(@persona.nombre).to eq 'Nombre'
+      end
+      it "Tiene un apellido" do
+        expect(@persona.apellido).to eq 'Apellido'
+      end
+      it "Tiene un sexo" do
+        expect(@persona.sexo).to eq 1
+      end
+      it "Tiene una edad" do
+        expect(@persona.edad).to eq 14
+      end
+      it "Tiene un método to_s" do
+        expect(@persona.to_s).to eq 'Me llamo Nombre Apellido, tengo 14 años'
       end
     end
 end
