@@ -146,3 +146,28 @@ RSpec.describe Persona do
       end
     end
 end
+
+RSpec.describe Paciente do
+  before :all do
+  @paciente = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14)
+  end
+  describe "Es un método: " do
+    it"Talla es un método de la propia clase?" do
+      expect(@paciente.respond_to?:talla).to eq true
+    end
+  end
+  describe "Metodo Heredado" do
+      it "Es un metodo heredado de la superclase?" do
+          expect(@paciente.respond_to?:nombre).to eq(true)
+      end
+  end
+  describe "Instancia" do
+    it "El metodo es una instancia de la clase?" do
+        expect(@paciente.instance_of?Paciente).to eq(true)
+    end
+    it "El metodo no debe ser una instancia de la clase" do
+        expect(@paciente.instance_of?Persona).to eq(false)
+    end
+  end
+
+end

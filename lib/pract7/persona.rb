@@ -12,3 +12,14 @@ class Persona
     "Me llamo #{@nombre} #{@apellido}, tengo #{@edad} años"
   end
 end
+
+class Paciente < Persona
+  attr_reader :peso, :talla
+
+  def initialize(peso, talla, nombre, apellido, sexo, edad)
+    @peso=peso
+    @talla=talla
+    super(nombre,apellido,sexo,edad)
+  end
+
+end
