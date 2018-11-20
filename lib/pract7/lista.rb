@@ -47,6 +47,17 @@ class Lista
       return aux.value
     end
 
+    def to_s
+      aux = @inicio
+      aux1 = "inicio -->"
+      while(aux != nil)
+        aux1 << aux.value.nombre + "-->"
+        aux = aux.prev
+      end
+        aux1 << "final"
+      "#{aux1}"
+    end
+
     def clasificacion_sal()
 
       superior_ir=Array.new

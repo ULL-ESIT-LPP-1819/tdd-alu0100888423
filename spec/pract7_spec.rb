@@ -116,6 +116,11 @@ RSpec.describe Lista do
     end
   end
 
+    describe "Mostrar lista" do
+      it"Método to_s?"do
+        expect(@l1.to_s).to eq("inicio -->papas fritas-->pipas girasol-->ambrosia tirma-->Donut crema-->final")
+      end
+    end
     describe "Clasificando según los gramos de sal." do
       it"Clasificando por gramos de sal."do
         expect(@l1.clasificacion_sal).to eq("Superiores a la IR [7.5, 6.2] | Inferiores a la IR [0.5, 0.8]")
@@ -204,14 +209,14 @@ RSpec.describe Paciente do
     end
   end
   describe "Debe tener una lista creada por 5 individuos" do
-    it"Debe meter todos los elementos en la lista" do
+    it"Meter todos los elementos en la lista?" do
       expect(@l2.insertar(@paciente)).to eq(@paciente)
       expect(@l2.insertar(@p2)).to eq(@p2)
       expect(@l2.insertar(@p3)).to eq(@p3)
       expect(@l2.insertar(@p4)).to eq(@p4)
       expect(@l2.insertar(@p5)).to eq(@p5)
     end
-    it"Se debe poder organizar según sus imc"do
+    it"Organizar según sus imc?"do
       expect(@l2.clasificacion_masacorporal).to eq("Bajo peso: [] | Peso adecuado: [21.39, 23.81, 21.64] | Sobrepeso: [] | Obeso: [33.46, 33.59]")
     end
   end
