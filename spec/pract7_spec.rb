@@ -212,7 +212,7 @@ RSpec.describe Paciente do
       expect(@l2.insertar(@p5)).to eq(@p5)
     end
     it"Se debe poder organizar según sus imc"do
-      expect(@l2.clasificacion_masacorporal).to be nil
+      expect(@l2.clasificacion_masacorporal).to eq("Bajo peso: [] | Peso adecuado: [21.39, 23.81, 21.64] | Sobrepeso: [] | Obeso: [33.46, 33.59]")
     end
   end
 

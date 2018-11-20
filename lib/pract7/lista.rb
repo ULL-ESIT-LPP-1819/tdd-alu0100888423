@@ -65,7 +65,7 @@ class Lista
       "Superiores a la IR #{superior_ir} | Inferiores a la IR #{inferior_ir}"
 
     end
-=begin
+
     def clasificacion_masacorporal()
 
       bajo_peso=Array.new
@@ -74,25 +74,24 @@ class Lista
       obesidad=Array.new
 
       while(@inicio != nil) do
-        if(@inicio.value.cal_imc < 18.5)
-            bajo_peso << @inicio.value.calc_imc
+        if(@inicio.value.calc_imc < 18.5)
+            bajo_peso << @inicio.value.calc_imc.round(2)
             extraer_inicio
-        elsif((@inicio.value.cal_imc >= 18.5) && (@inicio.value.calc_imc <= 24.9))
-            adecuado << @inicio.value.calc_imc
+        elsif((@inicio.value.calc_imc >= 18.5) && (@inicio.value.calc_imc <= 24.9))
+            adecuado << @inicio.value.calc_imc.round(2)
             extraer_inicio
-        elsif((@inicio.value.cal_imc >= 25.0) && (@inicio.value.calc_imc <= 29.9))
-            sobrepeso << @inicio.value.calc_imc
+        elsif((@inicio.value.calc_imc >= 25.0) && (@inicio.value.calc_imc <= 29.9))
+            sobrepeso << @inicio.value.calc_imc.round(2)
             extraer_inicio
-        elsif(@inicio.value.cal_imc >= 30.0)
-            obeso << @inicio.value.calc_imc
+        elsif(@inicio.value.calc_imc >= 30.0)
+            obesidad << @inicio.value.calc_imc.round(2)
             extraer_inicio
         end
       end
 
-        "Bajo peso: #{bajo_peso} | Peso adecuado: #{adecuado} | Sobrepeso: #{sobrepeso} | Obeso: #{obeso}"
+        "Bajo peso: #{bajo_peso} | Peso adecuado: #{adecuado} | Sobrepeso: #{sobrepeso} | Obeso: #{obesidad}"
 
     end
-=end
 
 end
 
