@@ -22,4 +22,12 @@ class Paciente < Persona
     super(nombre,apellido,sexo,edad)
   end
 
+  def calc_imc
+    @peso / (@talla * @talla)
+  end
+
+  def to_s
+     "Me llamo #{@nombre} #{@apellido}, tengo #{@edad} años | Datos del paciente --> #{@peso}kg, #{@talla}m"
+  end
+
 end

@@ -1,5 +1,5 @@
 require "spec_helper"
-
+=begin
 RSpec.describe Etiqueta do
   it "has a version number" do
     expect(Pract7::VERSION).not_to be nil
@@ -76,7 +76,7 @@ describe "#Debe existir un método " do
   end
 end
 
-
+=end
 RSpec.describe Lista do
   before :all do
     @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
@@ -145,6 +145,15 @@ RSpec.describe Persona do
         expect(@persona.to_s).to eq 'Me llamo Nombre Apellido, tengo 14 años'
       end
     end
+
+    describe "Jerarquia de la clase Persona" do
+        it "Pertenece a la Clase Object?" do
+           expect(@persona.is_a?Object).to eq(true)
+        end
+        it "Pertenece a la Clase BasicObject?" do
+           expect(@persona.is_a?BasicObject).to eq(true)
+        end
+    end
 end
 
 RSpec.describe Paciente do
@@ -170,7 +179,7 @@ RSpec.describe Paciente do
     end
   end
 
-  describe "Jerarquia" do
+  describe "Jerarquía " do
     it "Pertenece a la Clase Persona?" do
       expect(@paciente.is_a?Persona).to eq(true)
     end
@@ -178,8 +187,15 @@ RSpec.describe Paciente do
       expect(@paciente.is_a?Object).to eq(true)
     end
     it "Pertenece a la Clase BasicObject?" do
-      expect(@paciente.is_a?BasicObject).to eq(true) 
+      expect(@paciente.is_a?BasicObject).to eq(true)
     end
   end
-
+  describe "Debe tener método:" do
+    it "Método to_s?" do
+      expect(@paciente.to_s).to eq ("Me llamo Nombre Apellido, tengo 14 años | Datos del paciente --> 67kg, 1.77m")
+    end
+    it"Método para calcular el imc?"do
+      expect(@paciente.calc_imc.round(2)).to eq 21.39
+    end
+  end
 end
