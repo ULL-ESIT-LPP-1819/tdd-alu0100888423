@@ -170,4 +170,16 @@ RSpec.describe Paciente do
     end
   end
 
+  describe "Jerarquia" do
+    it "Pertenece a la Clase Persona?" do
+      expect(@paciente.is_a?Persona).to eq(true)
+    end
+    it "Pertenece a la Clase Object?" do
+      expect(@paciente.is_a?Object).to eq(true)
+    end
+    it "Pertenece a la Clase BasicObject?" do
+      expect(@paciente.is_a?BasicObject).to eq(true) 
+    end
+  end
+
 end
