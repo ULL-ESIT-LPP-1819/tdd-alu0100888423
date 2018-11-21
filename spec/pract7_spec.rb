@@ -163,11 +163,11 @@ end
 
 RSpec.describe Paciente do
   before :all do
-  @paciente = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14)
-  @p2 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19)
-  @p3 = Paciente.new(78,1.81,'Natalia', 'Rodriguez', 0, 54)
-  @p4 = Paciente.new(86,1.60,'German', 'Mendez', 1, 22)
-  @p5 = Paciente.new(52,1.55,'Ana', 'Pérez', 0, 37)
+  @paciente = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14,0,0,0,0)
+  @p2 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92)
+  @p3 = Paciente.new(78,1.81,'Natalia', 'Rodriguez', 0, 54,0,0,0,0)
+  @p4 = Paciente.new(86,1.60,'German', 'Mendez', 1, 22,0.86,0.85,0.90,0.91)
+  @p5 = Paciente.new(52,1.55,'Ana', 'Pérez', 0, 37,0,0,0,0)
   @l2 = Lista.new()
   end
   describe "Es un método: " do
@@ -204,6 +204,9 @@ RSpec.describe Paciente do
     it "Método to_s?" do
       expect(@paciente.to_s).to eq ("Me llamo Nombre Apellido, tengo 14 años | Datos del paciente --> 67kg, 1.77m")
     end
+    it "Método to_s tratamiento obesidad?" do
+      expect(@p4.to_s).to eq ("Me llamo German Mendez, tengo 22 años | Datos del paciente --> 86kg, 1.6m, tiene tratamiento de obesidad -->0.94")
+    end
     it"Método para calcular el imc?"do
       expect(@paciente.calc_imc.round(2)).to eq 21.39
     end
@@ -222,7 +225,7 @@ RSpec.describe Paciente do
   end
 
 end
-
+=begin
 RSpec.describe Tratamiento_obesidad do
     before :all do
       @ej1= Tratamiento_obesidad.new(0.86,0.85,0.90,0.91,'Nombre', 'Apellido', 1, 14)
@@ -263,3 +266,4 @@ RSpec.describe Tratamiento_obesidad do
       end
     end
 end
+=end
