@@ -181,10 +181,10 @@ RSpec.describe Paciente do
       end
   end
   describe "Instancia" do
-    it "El metodo es una instancia de la clase?" do
+    it "Es una instancia de la clase?" do
         expect(@paciente.instance_of?Paciente).to eq(true)
     end
-    it "El metodo no debe ser una instancia de la clase" do
+    it "No debe ser una instancia de la clase" do
         expect(@paciente.instance_of?Persona).to eq(false)
     end
   end

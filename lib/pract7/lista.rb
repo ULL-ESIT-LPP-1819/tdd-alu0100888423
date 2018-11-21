@@ -84,7 +84,7 @@ class Lista
       sobrepeso=Array.new
       obesidad=Array.new
 
-      while(@inicio != nil) do
+      while(!empty) do
         if(@inicio.value.calc_imc < 18.5)
             bajo_peso << @inicio.value.calc_imc.round(2)
             extraer_inicio
