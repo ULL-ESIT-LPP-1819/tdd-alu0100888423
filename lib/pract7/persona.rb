@@ -2,6 +2,7 @@
 class Persona
 
   include Comparable
+
   attr_reader :nombre, :apellido, :sexo, :edad
 
   def initialize(nombre, apellido, sexo, edad)
@@ -31,6 +32,7 @@ class Paciente < Persona
   def calc_imc
     @peso / (@talla * @talla)
   end
+
 
   def trata_obesidad
     if(calc_imc >= 30.0)

@@ -228,7 +228,7 @@ end
 
 
 
-describe Etiqueta do
+RSpec.describe Etiqueta do
     context "COMPARABLE: " do
         before :each do
           @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
@@ -239,20 +239,20 @@ describe Etiqueta do
 
         end
 
-        it "Etiqueta1 es menor que etiqueta3" do
-            expect(@e1 < @e3).to eq(true)
+        it "Etiqueta3 es menor que etiqueta1" do
+            expect(@e3 < @e1).to eq(true)
         end
 
-        it "Etiqueta1 es menor o igual que etiqueta3" do
-            expect(@e1 <= @e3).to eq(true)
+        it "Etiqueta3 es menor o igual que etiqueta1" do
+            expect(@e3 <= @e1).to eq(true)
         end
 
-        it "Etiqueta3 es mayor que etiqueta1" do
-            expect(@e3 > @e1).to eq(true)
+        it "Etiqueta1 es mayor que etiqueta3" do
+            expect(@e1 > @e3).to eq(true)
         end
 
-        it "Etiqueta3 es mayor o igual que etiqueta1" do
-            expect(@e3 >= @e1).to eq(true)
+        it "Etiqueta1 es mayor o igual que etiqueta3" do
+            expect(@e1 >= @e3).to eq(true)
         end
 
         it "etiqueta1 es igual a @etiqueta2" do
@@ -260,11 +260,49 @@ describe Etiqueta do
         end
 
         it "etiqueta1 es distinto a etiqueta3" do
-            expect(@de1 != @e3).to eq(true)
+            expect(@e1 != @e3).to eq(true)
         end
 
     end
 end
+
+
+RSpec.describe Etiqueta do
+    context "COMPARABLE: " do
+        before :each do
+          @p1 = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14,0,0,0,0)
+          @p2 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92)
+          @p3 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92)
+          @p4 = Paciente.new(86,1.60,'German', 'Mendez', 1, 22,0.86,0.85,0.90,0.91)
+          @p5 = Paciente.new(52,1.55,'Ana', 'Pérez', 0, 37,0,0,0,0)
+
+        end
+
+        it "Paciente1 es menor el imc que el del paciente2" do
+            expect(@p1 < @p2).to eq(true)
+        end
+
+        it "Paciente1 es menor el imc que el del paciente2" do
+            expect(@e3 <= @e1).to eq(true)
+        end
+
+        it "Paciente1 es mayor el imc que el del paciente2" do
+            expect(@e1 > @e3).to eq(true)
+        end
+
+        it "Paciente1 es mayor o igual el imc que el del paciente2" do
+            expect(@p1 >= @p3).to eq(true)
+        end
+
+        it "Paciente2 es igual el imc que el del paciente3" do
+            expect(@p2 == @p3).to eq(true)
+        end
+
+        it "Paciente1 es distinto el imc que el del paciente2" do
+            expect(@p1 != @p23).to eq(true)
+        end
+
+    end
 end
 =begin
 describe Lista do

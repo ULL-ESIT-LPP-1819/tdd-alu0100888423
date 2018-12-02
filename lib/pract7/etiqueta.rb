@@ -1,6 +1,9 @@
 #!/usr/bin/ruby
 
 class Etiqueta
+
+  include Comparable
+
   attr_reader :nombre, :cantidad_grasa, :grasa_saturada, :hidratos, :azucares, :proteinas, :sal, :porcion, :nporciones
 
   def initialize(nombre, cantidad_grasa, grasa_saturada, hidratos, azucares, proteinas, sal, porcion, nporciones)
@@ -19,12 +22,20 @@ class Etiqueta
     @nombre
   end
 
+  def get_valor
+    @cantidad_grasa * 37 + @hidratos * 17 + @proteinas * 17
+  end
+
   def get_valor_energetico
     valor_energeticoKJ = @cantidad_grasa * 37 + @hidratos * 17 + @proteinas * 17
     valor_energeticoKcal = @cantidad_grasa * 9 + @hidratos * 4 + @proteinas * 4
     "#{valor_energeticoKJ} KJ (#{valor_energeticoKcal} Kcal)"
   end
 
+  # Funcion para el comparable
+    def <=> other
+        get_valor <=> other.get_valor
+    end
 
   def get_cantidad_grasas
     @cantidad_grasa
