@@ -355,7 +355,8 @@ RSpec.describe Lista do
         end
     end
 end
-=begin
+
+
 RSpec.describe Lista do
 
     context "ENUMERABLE: " do
@@ -374,11 +375,12 @@ RSpec.describe Lista do
 
         describe "COLLECT" do
             it "Metodo collect :" do
-                expect(@p1.insertar(@p1)).to eq(@p1)
-                 expect(@l1.map{|i| i.calc_imc.round(2)*i.calc_imc.round(2)}).to eq([4560787.359999999])
-                 expect(@l1.collect{|i| i.calc_imc.round(2)*i.calc_imc.round(2)}).to eq([4560787.359999999])
+                 expect(@l1.insertar(@p1)).to eq(@p1)
+                 expect(@l1.map{|i| i.calc_imc.round(2)*i.calc_imc.round(2)}).to eq([457.5321])
+                 expect(@l1.collect{|i| i.calc_imc.round(2)*i.calc_imc.round(2)}).to eq([457.5321])
             end
         end
+
         describe "MAX" do
             it "Metodo max :" do
                 expect(@l1.insertar(@p2)).to eq(@p2)
@@ -394,16 +396,15 @@ RSpec.describe Lista do
                 expect(@l1.min).to eq(@p5)
             end
         end
-
         describe "SORT" do
             it "Metodo sort :" do
                 expect(@l1.insertar(@p1)).to eq(@p1)
                 expect(@l1.insertar(@p3)).to eq(@p3)
                 expect(@l1.insertar(@p4)).to eq(@p4)
                 expect(@l1.insertar(@p5)).to eq(@p5)
-                expect(@l1.sort).to eq([@p5,@p3,@p1,@p4])
+                expect(@l1.sort).to eq([@p1,@p5,@p3,@p4])
             end
         end
+
     end
 end
-=end
