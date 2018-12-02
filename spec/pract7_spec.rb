@@ -304,103 +304,54 @@ RSpec.describe Etiqueta do
 
     end
 end
-=begin
-describe Lista do
+
+RSpec.describe Lista do
 
     context "ENUMERABLE: " do
         before :each do
 
-        @d6 = Dieta.new('DESAYUNO',15,['Leche desnatada','Cacao instantaneo','Cereales de desayuno en hojuelas','Almendras laminadas (10 unidades)'],['1 vaso',' 1 c/sopera',' 1 bol pequeño','2 c/soperas'],['200 ml','10 g','40 g','10 g'],288.0,17,21,62)
-        @d7 = Dieta.new('MEDIA MAÑANA',10,['Cerezas','Galletas bifidus con sésamo'],['10-12 unidades medianas','4 unidades'],['120 g','40 g'],255.5,7,24,69)
-        @d8 = Dieta.new('ALMUERZO', 30,  ['Macarrones con salsa de tomate y queso parmesano', 'Escalope de ternera', 'Ensalada básica con zanahoria rallada','Mandarina', 'Pan de trigo integral'], ['1 1/2 cucharón', '1 bistec mediano', '1 guarnición', '1 grande', '1 rodaja'], ['200 g', '100 g', '120 g', '180 g', '20 g'], 785.9, 19, 34, 47)
-        @d9 = Dieta.new('MERIENDA',15,['Galletas de leche con chocolate y yogur','Flan de vainilla sin huevo'],['4 unidades','1 unidad'],['46 g','110 g'],313.6,10,30,60)
-        @d10 = Dieta.new('CENA', 30, ['Crema de bubango','Tortilla campesina con espinacas','Tomate en dados con atun','Piña natural o en su jugo picada','Pan de trigo integral'],['2 cucharones', '1 cuña grande','5 a 6 c/soperas','5 c/soperas','1 rodaja'],["200 g","150 g"," 150 g","120 g"], 561.6,19,40,41)
+          @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+          @e2 = Etiqueta.new('papas fritas', 33, 20, 48, 45, 5.8, 7.5, 12, 4)
+          @e3 = Etiqueta.new('pipas girasol', 33, 20, 48, 45, 5.8, 6.2, 12, 4)
+          @e4 = Etiqueta.new('ambrosia tirma', 33, 20, 48, 45, 5.8, 0.5, 12, 4)
+          @e5 = Etiqueta.new('Donut crema', 33, 20, 48, 45, 5.8, 0.8, 12, 4)
 
-        @l6 = Lista.new()
-        @v6 = [@d7,@d8,@d9,@d10]
+          @l1 = Lista.new()
 
         end
 
-
-        describe "ALL?" do
-            it "Insertando un elemento Dieta :" do
-                @l6.insertar_uno_inicio(@d6)
-                expect(@l6.all?).to eq(true)
-            end
-
-            it "Insertando varios elementos :" do
-              @l6.insertar_varios(@v6)
-              expect(@l6.all?).to eq(true)
-            end
-
-            it "Metodo all? con lista vacia :" do
-                expect(@l6.all?).to eq(true)
-            end
-        end
-
-        describe "ANY?" do
-            it "Insertando un elemento Dietas :" do
-                @l6.insertar_uno_inicio(@d6)
-                expect(@l6.any?).to eq(true)
-            end
-
-            it "Insertando varios elementos :" do
-              @l6.insertar_varios(@v6)
-              expect(@l6.any?).to eq(true)
-            end
+        describe "Insertando elementos:" do
+          it "Insertar un elemento a la lista:" do
+            expect(@l1.insertar(@e1)).to eq(@e1)
+            expect(@l1.insertar(@e2)).to eq(@e2)
+            expect(@l1.insertar(@e3)).to eq(@e3)
+            expect(@l1.insertar(@e4)).to eq(@e4)
+            expect(@l1.insertar(@e5)).to eq(@e5)
+          end
         end
 
         describe "COLLECT" do
             it "Metodo collect :" do
-                @l6.insertar_uno_inicio(@d6)
-                 expect(@l6.map{|i| i.vct*i.vct}).to eq([82944.0])
-                 expect(@l6.collect{|i| i.vct*i.vct}).to eq([82944.0])
-            end
-        end
-
-        describe "COUNT" do
-            it "Metodo count :" do
-                @l6.insertar_varios(@v6)
-                expect(@l6.count).to eq(4)
-            end
-        end
-
-        describe "DETECT Y FIND" do
-            it "Metodo detect y find :" do
-                @l6.insertar_varios(@v6)
-                expect(@l6.detect {|i| i.vct == 255.5}).to eq(@d7)
-                expect(@l6.find {|i| i.vct == 313.6}).to eq(@d9)
-            end
-        end
-
-        describe "DROP" do
-            it "Metodo drop :" do
-                @l6.insertar_varios(@v6)
-                expect(@l6.drop(3)).to eq([@d7])
+                 expect(@l1.map{|i| i.vct*i.vct}).to eq([82944.0])
+                 expect(@l1.collect{|i| i.vct*i.vct}).to eq([82944.0])
             end
         end
 
         describe "MAX" do
             it "Metodo max :" do
-                @l6.insertar_uno_inicio(@d6)
-                @l6.insertar_uno_inicio(@d7)
-                expect(@l6.max).to eq(@d6)
+                expect(@l1.max).to eq(@e2)
             end
         end
 
         describe "MIN" do
             it "Metodo min :" do
-                @l6.insertar_uno_inicio(@d6)
-                @l6.insertar_uno_inicio(@d7)
-                expect(@l6.min).to eq(@d7)
+                expect(@l1.min).to eq(@e1)
             end
         end
 
         describe "SORT" do
             it "Metodo sort :" do
-                @l6.insertar_varios(@v6)
-                expect(@l6.sort).to eq([@d7,@d9,@d10,@d8])
+                expect(@l1.sort).to eq([@e1,@e2,@e3,@e4,@e5])
             end
         end
     end
-=end
