@@ -225,45 +225,144 @@ RSpec.describe Paciente do
   end
 
 end
-=begin
-RSpec.describe Tratamiento_obesidad do
-    before :all do
-      @ej1= Tratamiento_obesidad.new(0.86,0.85,0.90,0.91,'Nombre', 'Apellido', 1, 14)
-    end
-    describe "Es un método: " do
-      it"Calc_rel es un método de la propia clase?" do
-        expect(@ej1.respond_to?:calc_rel).to eq true
-      end
-    end
-    describe "Metodo Heredado" do
-        it "Es un metodo heredado de la superclase?" do
-            expect(@ej1.respond_to?:nombre).to eq(true)
-        end
-    end
-    describe "Instancia" do
-      it "El metodo es una instancia de la clase?" do
-          expect(@ej1.instance_of?Tratamiento_obesidad).to eq(true)
-      end
-      it "El metodo no debe ser una instancia de la clase" do
-          expect(@ej1.instance_of?Persona).to eq(false)
-      end
-    end
 
-    describe "Jerarquía " do
-      it "Pertenece a la Clase Persona?" do
-        expect(@ej1.is_a?Persona).to eq(true)
-      end
-      it "Pertenece a la Clase Object?" do
-        expect(@ej1.is_a?Object).to eq(true)
-      end
-      it "Pertenece a la Clase BasicObject?" do
-        expect(@ej1.is_a?BasicObject).to eq(true)
-      end
-    end
-    describe "Debe tener método:" do
-      it "Método to_s?" do
-        expect(@ej1.to_s).to eq ("Me llamo Nombre Apellido, tengo 14 años | Relacion cintura/cadera --> 0.94")
-      end
+
+
+describe Etiqueta do
+    context "COMPARABLE: " do
+        before :each do
+          @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+          @e2 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+          @e3 = Etiqueta.new('pipas girasol', 27, 18, 43, 46, 4.8, 6.2, 12, 4)
+          @e4 = Etiqueta.new('ambrosia tirma', 31, 10, 57, 35, 7.2, 0.5, 12, 4)
+          @e5 = Etiqueta.new('Donut crema', 36, 25, 24, 35, 3.5, 0.8, 12, 4)
+
+        end
+
+        it "Etiqueta1 es menor que etiqueta3" do
+            expect(@e1 < @e3).to eq(true)
+        end
+
+        it "Etiqueta1 es menor o igual que etiqueta3" do
+            expect(@e1 <= @e3).to eq(true)
+        end
+
+        it "Etiqueta3 es mayor que etiqueta1" do
+            expect(@e3 > @e1).to eq(true)
+        end
+
+        it "Etiqueta3 es mayor o igual que etiqueta1" do
+            expect(@e3 >= @e1).to eq(true)
+        end
+
+        it "etiqueta1 es igual a @etiqueta2" do
+            expect(@e1 == @e2).to eq(true)
+        end
+
+        it "etiqueta1 es distinto a etiqueta3" do
+            expect(@de1 != @e3).to eq(true)
+        end
+
     end
 end
+end
+=begin
+describe Lista do
+
+    context "ENUMERABLE: " do
+        before :each do
+
+        @d6 = Dieta.new('DESAYUNO',15,['Leche desnatada','Cacao instantaneo','Cereales de desayuno en hojuelas','Almendras laminadas (10 unidades)'],['1 vaso',' 1 c/sopera',' 1 bol pequeño','2 c/soperas'],['200 ml','10 g','40 g','10 g'],288.0,17,21,62)
+        @d7 = Dieta.new('MEDIA MAÑANA',10,['Cerezas','Galletas bifidus con sésamo'],['10-12 unidades medianas','4 unidades'],['120 g','40 g'],255.5,7,24,69)
+        @d8 = Dieta.new('ALMUERZO', 30,  ['Macarrones con salsa de tomate y queso parmesano', 'Escalope de ternera', 'Ensalada básica con zanahoria rallada','Mandarina', 'Pan de trigo integral'], ['1 1/2 cucharón', '1 bistec mediano', '1 guarnición', '1 grande', '1 rodaja'], ['200 g', '100 g', '120 g', '180 g', '20 g'], 785.9, 19, 34, 47)
+        @d9 = Dieta.new('MERIENDA',15,['Galletas de leche con chocolate y yogur','Flan de vainilla sin huevo'],['4 unidades','1 unidad'],['46 g','110 g'],313.6,10,30,60)
+        @d10 = Dieta.new('CENA', 30, ['Crema de bubango','Tortilla campesina con espinacas','Tomate en dados con atun','Piña natural o en su jugo picada','Pan de trigo integral'],['2 cucharones', '1 cuña grande','5 a 6 c/soperas','5 c/soperas','1 rodaja'],["200 g","150 g"," 150 g","120 g"], 561.6,19,40,41)
+
+        @l6 = Lista.new()
+        @v6 = [@d7,@d8,@d9,@d10]
+
+        end
+
+
+        describe "ALL?" do
+            it "Insertando un elemento Dieta :" do
+                @l6.insertar_uno_inicio(@d6)
+                expect(@l6.all?).to eq(true)
+            end
+
+            it "Insertando varios elementos :" do
+              @l6.insertar_varios(@v6)
+              expect(@l6.all?).to eq(true)
+            end
+
+            it "Metodo all? con lista vacia :" do
+                expect(@l6.all?).to eq(true)
+            end
+        end
+
+        describe "ANY?" do
+            it "Insertando un elemento Dietas :" do
+                @l6.insertar_uno_inicio(@d6)
+                expect(@l6.any?).to eq(true)
+            end
+
+            it "Insertando varios elementos :" do
+              @l6.insertar_varios(@v6)
+              expect(@l6.any?).to eq(true)
+            end
+        end
+
+        describe "COLLECT" do
+            it "Metodo collect :" do
+                @l6.insertar_uno_inicio(@d6)
+                 expect(@l6.map{|i| i.vct*i.vct}).to eq([82944.0])
+                 expect(@l6.collect{|i| i.vct*i.vct}).to eq([82944.0])
+            end
+        end
+
+        describe "COUNT" do
+            it "Metodo count :" do
+                @l6.insertar_varios(@v6)
+                expect(@l6.count).to eq(4)
+            end
+        end
+
+        describe "DETECT Y FIND" do
+            it "Metodo detect y find :" do
+                @l6.insertar_varios(@v6)
+                expect(@l6.detect {|i| i.vct == 255.5}).to eq(@d7)
+                expect(@l6.find {|i| i.vct == 313.6}).to eq(@d9)
+            end
+        end
+
+        describe "DROP" do
+            it "Metodo drop :" do
+                @l6.insertar_varios(@v6)
+                expect(@l6.drop(3)).to eq([@d7])
+            end
+        end
+
+        describe "MAX" do
+            it "Metodo max :" do
+                @l6.insertar_uno_inicio(@d6)
+                @l6.insertar_uno_inicio(@d7)
+                expect(@l6.max).to eq(@d6)
+            end
+        end
+
+        describe "MIN" do
+            it "Metodo min :" do
+                @l6.insertar_uno_inicio(@d6)
+                @l6.insertar_uno_inicio(@d7)
+                expect(@l6.min).to eq(@d7)
+            end
+        end
+
+        describe "SORT" do
+            it "Metodo sort :" do
+                @l6.insertar_varios(@v6)
+                expect(@l6.sort).to eq([@d7,@d9,@d10,@d8])
+            end
+        end
+    end
 =end

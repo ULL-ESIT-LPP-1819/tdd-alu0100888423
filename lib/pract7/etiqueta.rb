@@ -25,6 +25,7 @@ class Etiqueta
     "#{valor_energeticoKJ} KJ (#{valor_energeticoKcal} Kcal)"
   end
 
+
   def get_cantidad_grasas
     @cantidad_grasa
   end
