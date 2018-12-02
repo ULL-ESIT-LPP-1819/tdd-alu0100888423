@@ -282,16 +282,16 @@ RSpec.describe Etiqueta do
             expect(@p1 < @p2).to eq(true)
         end
 
-        it "Paciente1 es menor el imc que el del paciente2" do
-            expect(@e3 <= @e1).to eq(true)
+        it "Paciente1 es menor o igual el imc que el del paciente2" do
+            expect(@p1 <= @p2).to eq(true)
         end
 
-        it "Paciente1 es mayor el imc que el del paciente2" do
-            expect(@e1 > @e3).to eq(true)
+        it "Paciente2 es mayor el imc que el del paciente1" do
+            expect(@p2 > @p1).to eq(true)
         end
 
-        it "Paciente1 es mayor o igual el imc que el del paciente2" do
-            expect(@p1 >= @p3).to eq(true)
+        it "Paciente2 es mayor o igual el imc que el del paciente1" do
+            expect(@p2 >= @p1).to eq(true)
         end
 
         it "Paciente2 es igual el imc que el del paciente3" do
@@ -299,7 +299,7 @@ RSpec.describe Etiqueta do
         end
 
         it "Paciente1 es distinto el imc que el del paciente2" do
-            expect(@p1 != @p23).to eq(true)
+            expect(@p1 != @p2).to eq(true)
         end
 
     end

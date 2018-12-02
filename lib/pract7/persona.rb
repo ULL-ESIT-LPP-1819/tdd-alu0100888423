@@ -33,6 +33,10 @@ class Paciente < Persona
     @peso / (@talla * @talla)
   end
 
+  # Funcion para el comparable
+    def <=> other
+        calc_imc <=> other.calc_imc
+    end
 
   def trata_obesidad
     if(calc_imc >= 30.0)
