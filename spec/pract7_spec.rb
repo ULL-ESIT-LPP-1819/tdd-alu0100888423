@@ -267,7 +267,7 @@ RSpec.describe Etiqueta do
 end
 
 
-RSpec.describe Etiqueta do
+RSpec.describe Paciente do
     context "COMPARABLE: " do
         before :each do
           @p1 = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14,0,0,0,0)
@@ -311,47 +311,99 @@ RSpec.describe Lista do
         before :each do
 
           @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
-          @e2 = Etiqueta.new('papas fritas', 33, 20, 48, 45, 5.8, 7.5, 12, 4)
-          @e3 = Etiqueta.new('pipas girasol', 33, 20, 48, 45, 5.8, 6.2, 12, 4)
-          @e4 = Etiqueta.new('ambrosia tirma', 33, 20, 48, 45, 5.8, 0.5, 12, 4)
-          @e5 = Etiqueta.new('Donut crema', 33, 20, 48, 45, 5.8, 0.8, 12, 4)
+          @e2 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+          @e3 = Etiqueta.new('pipas girasol', 27, 18, 43, 46, 4.8, 6.2, 12, 4)
+          @e4 = Etiqueta.new('ambrosia tirma', 31, 10, 57, 35, 7.2, 0.5, 12, 4)
+          @e5 = Etiqueta.new('Donut crema', 36, 25, 24, 35, 3.5, 0.8, 12, 4)
+
 
           @l1 = Lista.new()
 
         end
 
-        describe "Insertando elementos:" do
-          it "Insertar un elemento a la lista:" do
-            expect(@l1.insertar(@e1)).to eq(@e1)
-            expect(@l1.insertar(@e2)).to eq(@e2)
-            expect(@l1.insertar(@e3)).to eq(@e3)
-            expect(@l1.insertar(@e4)).to eq(@e4)
-            expect(@l1.insertar(@e5)).to eq(@e5)
-          end
-        end
-
         describe "COLLECT" do
             it "Metodo collect :" do
-                 expect(@l1.map{|i| i.vct*i.vct}).to eq([82944.0])
-                 expect(@l1.collect{|i| i.vct*i.vct}).to eq([82944.0])
+                expect(@l1.insertar(@e1)).to eq(@e1)
+                 expect(@l1.map{|i| i.get_valor.round(2)*i.get_valor.round(2)}).to eq([4560787.359999999])
+                 expect(@l1.collect{|i| i.get_valor.round(2)*i.get_valor.round(2)}).to eq([4560787.359999999])
             end
         end
-
         describe "MAX" do
             it "Metodo max :" do
+                expect(@l1.insertar(@e2)).to eq(@e2)
+                expect(@l1.insertar(@e3)).to eq(@e3)
                 expect(@l1.max).to eq(@e2)
             end
         end
 
         describe "MIN" do
             it "Metodo min :" do
-                expect(@l1.min).to eq(@e1)
+                expect(@l1.insertar(@e4)).to eq(@e4)
+                expect(@l1.insertar(@e5)).to eq(@e5)
+                expect(@l1.min).to eq(@e5)
             end
         end
 
         describe "SORT" do
             it "Metodo sort :" do
-                expect(@l1.sort).to eq([@e1,@e2,@e3,@e4,@e5])
+                expect(@l1.insertar(@e1)).to eq(@e1)
+                expect(@l1.insertar(@e3)).to eq(@e3)
+                expect(@l1.insertar(@e4)).to eq(@e4)
+                expect(@l1.insertar(@e5)).to eq(@e5)
+                expect(@l1.sort).to eq([@e5,@e3,@e1,@e4])
             end
         end
     end
+end
+=begin
+RSpec.describe Lista do
+
+    context "ENUMERABLE: " do
+        before :each do
+
+          @p1 = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14,0,0,0,0)
+          @p2 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92)
+          @p3 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92)
+          @p4 = Paciente.new(86,1.60,'German', 'Mendez', 1, 22,0.86,0.85,0.90,0.91)
+          @p5 = Paciente.new(52,1.55,'Ana', 'Pérez', 0, 37,0,0,0,0)
+
+
+          @l1 = Lista.new()
+
+        end
+
+        describe "COLLECT" do
+            it "Metodo collect :" do
+                expect(@p1.insertar(@p1)).to eq(@p1)
+                 expect(@l1.map{|i| i.calc_imc.round(2)*i.calc_imc.round(2)}).to eq([4560787.359999999])
+                 expect(@l1.collect{|i| i.calc_imc.round(2)*i.calc_imc.round(2)}).to eq([4560787.359999999])
+            end
+        end
+        describe "MAX" do
+            it "Metodo max :" do
+                expect(@l1.insertar(@p2)).to eq(@p2)
+                expect(@l1.insertar(@p3)).to eq(@p3)
+                expect(@l1.max).to eq(@p2)
+            end
+        end
+
+        describe "MIN" do
+            it "Metodo min :" do
+                expect(@l1.insertar(@p4)).to eq(@p4)
+                expect(@l1.insertar(@p5)).to eq(@p5)
+                expect(@l1.min).to eq(@p5)
+            end
+        end
+
+        describe "SORT" do
+            it "Metodo sort :" do
+                expect(@l1.insertar(@p1)).to eq(@p1)
+                expect(@l1.insertar(@p3)).to eq(@p3)
+                expect(@l1.insertar(@p4)).to eq(@p4)
+                expect(@l1.insertar(@p5)).to eq(@p5)
+                expect(@l1.sort).to eq([@p5,@p3,@p1,@p4])
+            end
+        end
+    end
+end
+=end

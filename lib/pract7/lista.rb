@@ -61,6 +61,16 @@ class Lista
       "#{aux1}"
     end
 
+      # Funcion sin la cual no funcionaria el Enumerable
+    def each
+      nodo = @inicio
+      while(nodo != nil)
+        yield nodo.value
+        nodo = nodo.prev
+      end
+    end
+
+
     def clasificacion_sal()
 
       superior_ir=Array.new
