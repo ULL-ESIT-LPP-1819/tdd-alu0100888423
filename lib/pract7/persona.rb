@@ -29,9 +29,9 @@ class Paciente < Persona
     super(nombre,apellido,sexo,edad)
   end
 
-  def calc_imc
-    @peso / (@talla * @talla)
-  end
+    def calc_imc
+      @peso / (@talla * @talla)
+    end
 
   # Funcion para el comparable
     def <=> other

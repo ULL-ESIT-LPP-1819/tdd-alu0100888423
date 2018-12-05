@@ -23,7 +23,7 @@ class Etiqueta
   end
 
   def get_valor
-    @cantidad_grasa * 37 + @hidratos * 17 + @proteinas * 17
+    @cantidad_grasa * 9 + @hidratos * 4 + @proteinas * 4
   end
 
   def get_valor_energetico

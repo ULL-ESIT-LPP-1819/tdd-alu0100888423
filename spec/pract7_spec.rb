@@ -321,13 +321,24 @@ RSpec.describe Lista do
 
         end
 
+        describe "SELECT" do
+            it "Metodo select :" do
+                expect(@l1.insertar(@e1)).to eq(@e1)
+                expect(@l1.insertar(@e3)).to eq(@e3)
+                expect(@l1.insertar(@e4)).to eq(@e4)
+                expect(@l1.insertar(@e5)).to eq(@e5)
+                expect(@l1.select{ |i| i.get_valor > 500}).to eq([@e1,@e4])
+            end
+        end
+        #l1.select{ |i| i.get_valor > 500}
         describe "COLLECT" do
             it "Metodo collect :" do
                 expect(@l1.insertar(@e1)).to eq(@e1)
-                 expect(@l1.map{|i| i.get_valor.round(2)*i.get_valor.round(2)}).to eq([4560787.359999999])
-                 expect(@l1.collect{|i| i.get_valor.round(2)*i.get_valor.round(2)}).to eq([4560787.359999999])
+                 expect(@l1.map{|i| i.get_valor.round(2)}).to eq([512.2])
+                 expect(@l1.collect{|i| i.get_valor.round(2)}).to eq([512.2])
             end
         end
+
         describe "MAX" do
             it "Metodo max :" do
                 expect(@l1.insertar(@e2)).to eq(@e2)
@@ -373,11 +384,21 @@ RSpec.describe Lista do
 
         end
 
+        describe "SELECT" do
+            it "Metodo select :" do
+                expect(@l1.insertar(@p1)).to eq(@p1)
+                expect(@l1.insertar(@p3)).to eq(@p3)
+                expect(@l1.insertar(@p4)).to eq(@p4)
+                expect(@l1.insertar(@p5)).to eq(@p5)
+                expect(@l1.select{ |i| i.calc_imc > 30}).to eq([@p3,@p4])
+            end
+        end
+
         describe "COLLECT" do
             it "Metodo collect :" do
                  expect(@l1.insertar(@p1)).to eq(@p1)
-                 expect(@l1.map{|i| i.calc_imc.round(2)*i.calc_imc.round(2)}).to eq([457.5321])
-                 expect(@l1.collect{|i| i.calc_imc.round(2)*i.calc_imc.round(2)}).to eq([457.5321])
+                 expect(@l1.map{|i| i.calc_imc.round(2)}).to eq([21.39])
+                 expect(@l1.collect{|i| i.calc_imc.round(2)}).to eq([21.39])
             end
         end
 
