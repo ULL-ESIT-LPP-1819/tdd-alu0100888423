@@ -334,8 +334,10 @@ RSpec.describe Lista do
         describe "COLLECT" do
             it "Metodo collect :" do
                 expect(@l1.insertar(@e1)).to eq(@e1)
-                 expect(@l1.map{|i| i.get_valor.round(2)}).to eq([512.2])
-                 expect(@l1.collect{|i| i.get_valor.round(2)}).to eq([512.2])
+                expect(@l1.insertar(@e3)).to eq(@e3)
+                expect(@l1.insertar(@e4)).to eq(@e4)
+                 expect(@l1.map{|i| i.get_valor.round(2)}).to eq([512.2,434.2,535.8])
+                 expect(@l1.collect{|i| i.get_valor.round(2)}).to eq([512.2,434.2,535.8])
             end
         end
 
@@ -397,8 +399,10 @@ RSpec.describe Lista do
         describe "COLLECT" do
             it "Metodo collect :" do
                  expect(@l1.insertar(@p1)).to eq(@p1)
-                 expect(@l1.map{|i| i.calc_imc.round(2)}).to eq([21.39])
-                 expect(@l1.collect{|i| i.calc_imc.round(2)}).to eq([21.39])
+                 expect(@l1.insertar(@p3)).to eq(@p3)
+                 expect(@l1.insertar(@p4)).to eq(@p4)
+                 expect(@l1.map{|i| i.calc_imc.round(2)}).to eq([21.39,33.46,33.59])
+                 expect(@l1.collect{|i| i.calc_imc.round(2)}).to eq([21.39,33.46,33.59])
             end
         end
 
