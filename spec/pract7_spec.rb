@@ -491,6 +491,59 @@ RSpec.describe Paciente do
 
         expect(paciente_energ.between?(margen_arriba,margen_abajo)).to eq(false)
       end
+      it "Equilibrio menu 2 para paciente 2" do    #margen de 10% de error
+        expect(@menu2.reduce(0){|sum, i| (sum + i.get_valor.round(2))}).to eq(970.0) #total menu1
+        expect((@p2.gasto_total).round(2)).to eq(719.68)
 
+        menu_energ = @menu2.reduce(0){|sum, i| (sum + i.get_valor.round(2))}
+        paciente_energ = @p2.gasto_total.round(2)
+        margen_arriba = (menu_energ*0.9).round(2)
+        margen_abajo = (menu_energ*1.1).round(2)
+
+        expect(paciente_energ.between?(margen_arriba,margen_abajo)).to eq(false)
+      end
+
+      it "Equilibrio menu 3 para paciente 3" do    #margen de 10% de error
+        expect(@menu3.insertar(@e3)).to eq(@e3)
+        expect(@menu3.insertar(@e5)).to eq(@e5)
+
+        expect(@menu3.reduce(0){|sum, i| (sum + i.get_valor.round(2))}).to eq(868.2) #total menu1
+        expect((@p3.gasto_total).round(2)).to eq(1072.97)
+
+        menu_energ = @menu3.reduce(0){|sum, i| (sum + i.get_valor.round(2))}
+        paciente_energ = @p3.gasto_total.round(2)
+        margen_arriba = (menu_energ*0.9).round(2)
+        margen_abajo = (menu_energ*1.1).round(2)
+
+        expect(paciente_energ.between?(margen_arriba,margen_abajo)).to eq(false)
+      end
+
+      it "Equilibrio menu 4 para paciente 4" do    #margen de 10% de error
+        expect(@menu4.insertar(@e1)).to eq(@e1)
+        expect(@menu4.insertar(@e4)).to eq(@e4)
+        expect(@menu4.reduce(0){|sum, i| (sum + i.get_valor.round(2))}).to eq(1048.0) #total menu1
+        expect((@p4.gasto_total).round(2)).to eq(820.63)
+
+        menu_energ = @menu4.reduce(0){|sum, i| (sum + i.get_valor.round(2))}
+        paciente_energ = @p4.gasto_total.round(2)
+        margen_arriba = (menu_energ*0.9).round(2)
+        margen_abajo = (menu_energ*1.1).round(2)
+
+        expect(paciente_energ.between?(margen_arriba,margen_abajo)).to eq(false)
+      end
+
+      it "Equilibrio menu 5 para paciente 5" do    #margen de 10% de error
+        expect(@menu5.insertar(@e4)).to eq(@e4)
+        expect(@menu5.insertar(@e5)).to eq(@e5)
+        expect(@menu5.reduce(0){|sum, i| (sum + i.get_valor.round(2))}).to eq(969.8) #total menu1
+        expect((@p5.gasto_total).round(2)).to eq(384.66)
+
+        menu_energ = @menu5.reduce(0){|sum, i| (sum + i.get_valor.round(2))}
+        paciente_energ = @p5.gasto_total.round(2)
+        margen_arriba = (menu_energ*0.9).round(2)
+        margen_abajo = (menu_energ*1.1).round(2)
+
+        expect(paciente_energ.between?(margen_arriba,margen_abajo)).to eq(false)
+      end
     end
 end
