@@ -17,7 +17,7 @@ class Persona
 end
 
 class Paciente < Persona
-  attr_reader :cad1, :cad2, :cint1, :cint2,:peso, :talla
+  attr_reader :cad1, :cad2, :cint1, :cint2,:peso, :talla, :nivel_actividad
 
   def initialize(peso, talla, nombre, apellido, sexo, edad,cint1, cint2, cad1, cad2, nivel_actividad)
     @cad1 = cad1
@@ -63,4 +63,36 @@ class Paciente < Persona
     end
   end
 
+    def peso_teorico
+      peso_teorico_ideal = (@talla - 150) * 0.75 + 50
+    end
+
+    def gasto_energetico
+      if(@sexo == 1)
+        gasto_energetico_hom =  (10 * @peso) + (6.25 * @talla) - (5 * @edad) - 161
+      else
+        gasto_energetico_muj =  (10 * @peso) + (6.25 * @talla) - (5 * @edad) + 5
+      end
+    end
+
+    def efecto_termogeno
+      efecto_termogeno1 = gasto_energetico * 0.10
+    end
+
+    def gasto_actividad_fisica
+      if(nivel_actividad == 'Reposo')
+        factor_fisico = 0.0
+      elsif(nivel_actividad == 'Actividad ligera')
+        factor_fisico = 0.12
+      elsif(nivel_actividad == 'Actividad moderada')
+        factor_fisico = 0.27
+      elsif(nivel_actividad == 'Actividad intensa')
+        factor_fisico = 0.54
+      end
+      gasto_energetico * factor_fisico
+    end
+
+    def gasto_total
+      gasto_energetico + efecto_termogeno + gasto_actividad_fisica
+    end
 end
