@@ -77,6 +77,9 @@ describe "#Debe existir un método " do
 end
 
 =end
+
+=begin
+
 RSpec.describe Lista do
   before :all do
     @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
@@ -430,6 +433,53 @@ RSpec.describe Lista do
                 expect(@l1.sort).to eq([@p1,@p5,@p3,@p4])
             end
         end
+
+    end
+end
+
+=end
+
+RSpec.describe Paciente do
+    before :all do
+
+      @p1 = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14,0,0,0,0,'Actividad ligera')
+      @p2 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92,'Reposo')
+      @p3 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92,'Actividad intensa')
+      @p4 = Paciente.new(86,1.60,'German', 'Mendez', 1, 22,0.86,0.85,0.90,0.91,'Actividad moderada')
+      @p5 = Paciente.new(52,1.55,'Ana', 'Pérez', 0, 37,0,0,0,0,'Reposo')
+
+      @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+      @e2 = Etiqueta.new('nata', 31, 27, 52, 47, 4.8, 0.003, 12, 4)
+      @e3 = Etiqueta.new('pipas girasol', 27, 18, 43, 46, 4.8, 6.2, 12, 4)
+      @e4 = Etiqueta.new('ambrosia tirma', 31, 10, 57, 35, 7.2, 0.5, 12, 4)
+      @e5 = Etiqueta.new('Donut crema', 36, 25, 24, 35, 3.5, 0.8, 12, 4)
+
+      @menu1 = Lista.new()
+      @menu2 = Lista.new()
+      @menu3 = Lista.new()
+      @menu4 = Lista.new()
+      @menu5 = Lista.new()
+    end
+
+    describe "métodos menú" do
+
+      it "collect" do
+        expect(@menu1.insertar(@e1)).to eq(@e1)
+        expect(@menu1.insertar(@e2)).to eq(@e2)
+        expect(@menu1.map{|i| i.get_valor.round(2)}).to eq([512.2, 506.2])
+        expect(@menu1.collect{|i| i.get_valor.round(2)}).to eq([512.2, 506.2])
+      end
+
+      it "zip" do
+        expect(@menu2.insertar(@e3)).to eq(@e3)
+        expect(@menu2.insertar(@e4)).to eq(@e4)
+        expect(@menu1.zip(@menu2)).to eq([[@e1,@e3],[@e2,@e4]])
+      end
+
+      it "reduce" do
+
+        expect(@menu1.reduce(0){|sum, i| (sum + i.get_valor.round(2))}).to eq(1018.4000000000001)
+      end
 
     end
 end
