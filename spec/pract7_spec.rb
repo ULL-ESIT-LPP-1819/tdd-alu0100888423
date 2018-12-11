@@ -477,8 +477,19 @@ RSpec.describe Paciente do
       end
 
       it "reduce" do
-
         expect(@menu1.reduce(0){|sum, i| (sum + i.get_valor.round(2))}).to eq(1018.4000000000001)
+      end
+
+      it "Equilibrio menu 1 para paciente 1" do    #margen de 10% de error
+        expect(@menu1.reduce(0){|sum, i| (sum + i.get_valor.round(2))}).to eq(1018.4000000000001) #total menu1
+        expect((@p1.gasto_total).round(2)).to eq(549.08)
+
+        menu_energ = @menu1.reduce(0){|sum, i| (sum + i.get_valor.round(2))}
+        paciente_energ = @p1.gasto_total.round(2)
+        margen_arriba = (menu_energ*0.9).round(2)
+        margen_abajo = (menu_energ*1.1).round(2)
+
+        expect(paciente_energ.between?(margen_arriba,margen_abajo)).to eq(false)
       end
 
     end
