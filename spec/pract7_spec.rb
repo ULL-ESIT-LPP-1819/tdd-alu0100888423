@@ -438,7 +438,7 @@ RSpec.describe Lista do
 end
 
 =end
-
+=begin
 RSpec.describe Paciente do
     before :all do
 
@@ -546,4 +546,29 @@ RSpec.describe Paciente do
         expect(paciente_energ.between?(margen_arriba,margen_abajo)).to eq(false)
       end
     end
+end
+=end
+
+RSpec.describe Paciente do
+    before :all do
+
+      @p1 = Paciente.new(67,1.77,'Nombre', 'Apellido', 1, 14,0,0,0,0,'Actividad ligera')
+      @p2 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92,'Reposo')
+      @p3 = Paciente.new(90,1.64,'Daniel', 'Fernandez', 1, 19,0.87,0.88,0.91,0.92,'Actividad intensa')
+      @p4 = Paciente.new(86,1.60,'German', 'Mendez', 1, 22,0.86,0.85,0.90,0.91,'Actividad moderada')
+      @p5 = Paciente.new(52,1.55,'Ana', 'Pérez', 0, 37,0,0,0,0,'Reposo')
+
+      @e1 = Etiqueta.new('chocolate', 33, 20, 48, 45, 5.8, 0.003, 12, 4)
+      @e2 = Etiqueta.new('nata', 31, 27, 52, 47, 4.8, 0.003, 12, 4)
+      @e3 = Etiqueta.new('pipas girasol', 27, 18, 43, 46, 4.8, 6.2, 12, 4)
+      @e4 = Etiqueta.new('ambrosia tirma', 31, 10, 57, 35, 7.2, 0.5, 12, 4)
+      @e5 = Etiqueta.new('Donut crema', 36, 25, 24, 35, 3.5, 0.8, 12, 4)
+    end
+
+    describe "métodos menú" do
+
+      it "collect" do
+      end
+    end
+
 end
