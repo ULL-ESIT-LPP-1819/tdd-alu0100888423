@@ -1,4 +1,5 @@
 require "spec_helper"
+
 =begin
 RSpec.describe Etiqueta do
   it "has a version number" do
@@ -585,14 +586,38 @@ RSpec.describe Paciente do
     describe "Prueba de ordenaciones: " do
 
       it "Array menú, con bucle for: " do
+          expect(@menu.ordenamiento_for).to eq([@e5,@e3,@e2,@e1,@e4])
       end
       it "Lista pacientes, con bucle for: " do
+          expect(@listap.ordenamiento_for).to eq([@p5,@p1,@p2,@p4,@p3])
       end
       it "Array menú, con bucle each: " do
+        expect(@menu.ordenamiento_each).to eq([@e5,@e3,@e2,@e1,@e4])
       end
-      it "Lista pacientes, con bucle sort: " do
+      it "Lista pacientes, con bucle each: " do
+        expect(@listap.ordenamiento_each).to eq([@p5,@p1,@p2,@p4,@p3])
       end
       it "Array menú, con bucle sort: " do
+        expect(@menu.sort).to eq([@e5,@e3,@e2,@e1,@e4])
+      end
+      it "Lista pacientes, con bucle sort: " do
+        expect(@listap.sort).to eq([@p5,@p1,@p2,@p4,@p3])
+      end
+      it "Benchmark menu: " do
+        n=1000
+          Benchmark.bm do |x|
+          x.report("for"){ n.times{@menu.ordenamiento_for}}
+          x.report("each"){ n.times{@menu.ordenamiento_each}}
+          x.report("sort"){ n.times{@menu.sort}}
+          end
+      end
+      it "Benchmark lista: " do
+        n=1000
+          Benchmark.bm do |x|
+          x.report("for"){ n.times{@listap.ordenamiento_for}}
+          x.report("each"){ n.times{@listap.ordenamiento_each}}
+          x.report("sort"){ n.times{@listap.sort}}
+          end
       end
     end
 

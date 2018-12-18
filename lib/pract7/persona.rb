@@ -36,7 +36,7 @@ class Paciente < Persona
 
   # Funcion para el comparable
     def <=> other
-        calc_imc <=> other.calc_imc
+        gasto_total <=> other.gasto_total
     end
 
   def trata_obesidad
