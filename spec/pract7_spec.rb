@@ -563,11 +563,36 @@ RSpec.describe Paciente do
       @e3 = Etiqueta.new('pipas girasol', 27, 18, 43, 46, 4.8, 6.2, 12, 4)
       @e4 = Etiqueta.new('ambrosia tirma', 31, 10, 57, 35, 7.2, 0.5, 12, 4)
       @e5 = Etiqueta.new('Donut crema', 36, 25, 24, 35, 3.5, 0.8, 12, 4)
+
+
+      @menu = []
+      @menu << @e1
+      @menu << @e2
+      @menu << @e3
+      @menu << @e4
+      @menu << @e5
+
+      @listap = Lista.new()
+      @listap.insertar(@p1)
+      @listap.insertar(@p2)
+      @listap.insertar(@p3)
+      @listap.insertar(@p4)
+      @listap.insertar(@p5)
+
+
     end
 
-    describe "métodos menú" do
+    describe "Prueba de ordenaciones: " do
 
-      it "collect" do
+      it "Array menú, con bucle for: " do
+      end
+      it "Lista pacientes, con bucle for: " do
+      end
+      it "Array menú, con bucle each: " do
+      end
+      it "Lista pacientes, con bucle sort: " do
+      end
+      it "Array menú, con bucle sort: " do
       end
     end
 
